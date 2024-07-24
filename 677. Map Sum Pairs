@@ -1,0 +1,29 @@
+class MapSum {
+public:
+    unordered_map<string,int> mp;
+    MapSum() {
+        
+    }
+    
+    void insert(string key, int val) {
+        mp[key]=val;
+        
+    }
+    
+    int sum(string prefix) {
+        int len=prefix.length();
+        int sum=0;
+        for(auto& p:mp)
+            {
+            string str=p.first;
+                
+            if(prefix== str.substr(0,len))
+                sum+=p.second;
+            else 
+                continue;
+            }
+        
+        return sum;
+    }
+};
+
