@@ -1,0 +1,11 @@
+#include<iostream>
+#include<vector>
+#include<algorithm>
+
+class Solution {
+public:
+    void nextPermutation(vector<int>& A) {
+         int n=A.size();
+    std::next_permutation(A.begin(),A.end());
+    }
+};
