@@ -1,0 +1,30 @@
+class Solution {
+public:
+    bool areNumbersAscending(std::string s) {
+        int prev = INT_MIN;
+        int n = s.length();
+        int current = 0;
+        bool in_number = false;
+
+        for (int i = 0; i < n; ++i) {
+            if (isdigit(s[i])) {
+                current = current * 10 + (s[i] - '0');
+                in_number = true;
+            } else if (in_number) {
+                if (current <= prev) {
+                    return false;
+                }
+                prev = current;
+                current = 0;
+                in_number = false;
+            }
+        }
+        
+        // Final check if the string ends with a number
+        if (in_number && current <= prev) {
+            return false;
+        }
+
+        return true;
+    }
+};
