@@ -1,0 +1,23 @@
+class Solution {
+public:
+    int maxEqualRowsAfterFlips(vector<vector<int>>& matrix) {
+        unordered_map<string, int> mp;
+        int n = matrix[0].size();
+        for (auto& currrow : matrix) {
+            string a = "";
+            string r = "";
+            for (int i = 0; i < n; i++) {
+                a = a + to_string(currrow[i]);
+                r = r + to_string(currrow[i] == 0 ? 1 : 0);
+            }
+            mp[a]++;
+            mp[r]++;
+        }
+        int maxi = 0;
+        for (auto i : mp) {
+            if (i.second > maxi)
+                maxi = i.second;
+        }
+        return maxi;
+    }
+};
