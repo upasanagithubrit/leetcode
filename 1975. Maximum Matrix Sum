@@ -1,0 +1,21 @@
+class Solution {
+public:
+    long long maxMatrixSum(vector<vector<int>>& matrix) {
+        long long totalneg=0;
+        int mini=INT_MAX;
+        long long sum=0;
+        long long m=matrix.size();
+        long long n=matrix[0].size();
+
+        for(int i=0;i<m;i++)
+        {
+            for(int j=0;j<n;j++)
+            {
+                if(matrix[i][j]<0) totalneg++;
+                sum+=abs(matrix[i][j]);
+                mini=min(mini,abs(matrix[i][j]));
+            }
+        }
+    return totalneg%2==0?sum:(sum-2*mini);
+    }
+};
